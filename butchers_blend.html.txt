@@ -1,0 +1,64 @@
+<!-- butchers_blend.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butcher's Blend Seasonings - Benchmark Chef Supply</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <!-- Navigation links -->
+  </nav>
+
+  <!-- Product Section -->
+  <section id="butchers-blend-container" class="product-container">
+    <!-- Product cards -->
+    <div class="product-card" data-ingredients="Ingredient 1, Ingredient 2, Ingredient 3">
+      <h2>Product 1</h2>
+      <p>Description of Product 1</p>
+      <p>$9.99</p>
+      <button onclick="addToCart('Product 1')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-ingredients="Ingredient 4, Ingredient 5, Ingredient 6">
+      <h2>Product 2</h2>
+      <p>Description of Product 2</p>
+      <p>$12.99</p>
+      <button onclick="addToCart('Product 2')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-ingredients="Ingredient 7, Ingredient 8, Ingredient 9">
+      <h2>Product 3</h2>
+      <p>Description of Product 3</p>
+      <p>$14.99</p>
+      <button onclick="addToCart('Product 3')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-ingredients="Ingredient 10, Ingredient 11, Ingredient 12">
+      <h2>Product 4</h2>
+      <p>Description of Product 4</p>
+      <p>$8.99</p>
+      <button onclick="addToCart('Product 4')">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-ingredients="Ingredient 13, Ingredient 14, Ingredient 15">
+      <h2>Product 5</h2>
+      <p>Description of Product 5</p>
+      <p>$10.99</p>
+      <button onclick="addToCart('Product 5')">Add to Cart</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <!-- Footer content -->
+  </footer>
+</body>
+
+</html>
