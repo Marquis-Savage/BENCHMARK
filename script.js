@@ -1,90 +1,56 @@
 // script.js
-// Add your custom JavaScript functionality here
-// For example, handling form submissions or adding products to the cart
+let cartItems = [];
 
-// Sample product data
-const products = [
-  {
-    id: 1,
-    title: "Product 1",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: 9.99,
-    ingredients: "Ingredient 1, Ingredient 2, Ingredient 3",
-  },
-  {
-    id: 2,
-    title: "Product 2",
-    description: "Praesent nec enim sed nunc auctor vestibulum.",
-    price: 12.99,
-    ingredients: "Ingredient 4, Ingredient 5, Ingredient 6",
-  },
-  {
-    id: 3,
-    title: "Product 3",
-    description: "Donec fermentum, neque vel dapibus consectetur.",
-    price: 14.99,
-    ingredients: "Ingredient 7, Ingredient 8, Ingredient 9",
-  },
-  {
-    id: 4,
-    title: "Product 4",
-    description: "Vestibulum ante ipsum primis in faucibus orci luctus.",
-    price: 8.99,
-    ingredients: "Ingredient 10, Ingredient 11, Ingredient 12",
-  },
-  {
-    id: 5,
-    title: "Product 5",
-    description: "Sed et dolor aliquet, congue diam id, mattis mauris.",
-    price: 10.99,
-    ingredients: "Ingredient 13, Ingredient 14, Ingredient 15",
-  },
-];
-
-// Function to render products
-function renderProducts(products, containerId) {
-  const container = document.getElementById(containerId);
-
-  products.forEach((product) => {
-    const productCard = document.createElement("div");
-    productCard.classList.add("product-card");
-    productCard.dataset.ingredients = product.ingredients;
-
-    const title = document.createElement("h2");
-    title.textContent = product.title;
-
-    const description = document.createElement("p");
-    description.textContent = product.description;
-
-    const price = document.createElement("p");
-    price.textContent = "$" + product.price.toFixed(2);
-
-    const addToCartBtn = document.createElement("button");
-    addToCartBtn.textContent = "Add to Cart";
-    addToCartBtn.addEventListener("click", () => addToCart(product));
-
-    productCard.appendChild(title);
-    productCard.appendChild(description);
-    productCard.appendChild(price);
-    productCard.appendChild(addToCartBtn);
-
-    container.appendChild(productCard);
-  });
+function addToCart(productName, price) {
+  const item = {
+    name: productName,
+    price: price
+  };
+  
+  cartItems.push(item);
+  console.log(`Added ${productName} to the cart`);
 }
 
-// Add products to Butcher's Blend Seasonings page
-renderProducts(products, "butchers-blend-container");
+function displayCart() {
+  const cartContainer = document.getElementById('cart-items');
+  cartContainer.innerHTML = '';
 
-// Add products to Hot Sauces page
-renderProducts(products, "hot-sauces-container");
+  if (cartItems.length === 0) {
+    cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+  } else {
+    for (let i = 0; i < cartItems.length; i++) {
+      const item = cartItems[i];
+      const cartItem = document.createElement('div');
+      cartItem.classList.add('cart-item');
+      cartItem.innerHTML = `
+        <span>${item.name}</span>
+        <span>$${item.price.toFixed(2)}</span>
+      `;
+      cartContainer.appendChild(cartItem);
+    }
+  }
 
-// Add products to BBQ Sauces page
-renderProducts(products, "bbq-sauces-container");
+  const totalPrice = calculateTotal();
+  const totalPriceElement = document.getElementById('total-price');
+  totalPriceElement.textContent = `Total: $${totalPrice}`;
+}
 
-// Shopping Cart
-let cart = [];
+function calculateTotal() {
+  const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+  return totalPrice.toFixed(2);
+}
 
-function addToCart(product) {
-  cart.push(product);
-  alert("Product added to cart!");
+function checkout() {
+  const total = calculateTotal();
+  alert(`Total: $${total}\nThank you for your purchase!`);
+
+  // Reset the cart
+  cartItems = [];
+  displayCart();
+}
+
+// Add event listener to the checkout button
+const checkoutButton = document.getElementById('checkout-button');
+if (checkoutButton) {
+  checkoutButton.addEventListener('click', checkout);
 }
