@@ -1,56 +1,46 @@
-// script.js
-let cartItems = [];
+// Add your custom JavaScript code here
 
-function addToCart(productName, price) {
-  const item = {
-    name: productName,
-    price: price
-  };
-  
-  cartItems.push(item);
-  console.log(`Added ${productName} to the cart`);
+// Cart functionality
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+const cartItemsContainer = document.getElementById('cart-items');
+
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', addToCart);
+});
+
+function addToCart(event) {
+  const button = event.target;
+  const productContainer = button.parentElement.parentElement;
+  const productName = productContainer.querySelector('.product-name').textContent;
+  const productImage = productContainer.querySelector('.product-image').src;
+
+  const cartItem = document.createElement('div');
+  cartItem.classList.add('cart-item');
+  cartItem.innerHTML = `
+    <img class="cart-item-image" src="${productImage}" alt="${productName}">
+    <div class="cart-item-details">
+      <p>${productName}</p>
+    </div>
+  `;
+
+  cartItemsContainer.appendChild(cartItem);
 }
 
-function displayCart() {
-  const cartContainer = document.getElementById('cart-items');
-  cartContainer.innerHTML = '';
+// Payment successful page
+const shareButton = document.getElementById('share-button');
+shareButton.addEventListener('click', sharePurchase);
 
-  if (cartItems.length === 0) {
-    cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-  } else {
-    for (let i = 0; i < cartItems.length; i++) {
-      const item = cartItems[i];
-      const cartItem = document.createElement('div');
-      cartItem.classList.add('cart-item');
-      cartItem.innerHTML = `
-        <span>${item.name}</span>
-        <span>$${item.price.toFixed(2)}</span>
-      `;
-      cartContainer.appendChild(cartItem);
-    }
-  }
+function sharePurchase() {
+  const purchasedItems = document.querySelectorAll('.cart-item');
+  const sharedMessage = 'I just purchased these items from Benchmark Chef Supply! Check them out:';
 
-  const totalPrice = calculateTotal();
-  const totalPriceElement = document.getElementById('total-price');
-  totalPriceElement.textContent = `Total: $${totalPrice}`;
-}
+  let sharedContent = sharedMessage + '\n\n';
+  purchasedItems.forEach(item => {
+    const productName = item.querySelector('.cart-item-details p').textContent;
+    sharedContent += `• ${productName}\n`;
+  });
 
-function calculateTotal() {
-  const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
-  return totalPrice.toFixed(2);
-}
-
-function checkout() {
-  const total = calculateTotal();
-  alert(`Total: $${total}\nThank you for your purchase!`);
-
-  // Reset the cart
-  cartItems = [];
-  displayCart();
-}
-
-// Add event listener to the checkout button
-const checkoutButton = document.getElementById('checkout-button');
-if (checkoutButton) {
-  checkoutButton.addEventListener('click', checkout);
+  // Replace the following lines with the code for sharing via email or text message
+  console.log('Shared content:');
+  console.log(sharedContent);
 }
