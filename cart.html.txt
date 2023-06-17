@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Benchmark Chef Supply</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Benchmark Chef Supply</h1>
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="butchers_blend.html">Butcher's Blend</a>
+      <a href="hot_sauces.html">Hot Sauces</a>
+      <a href="bbq_sauces.html">BBQ Sauces</a>
+      <a href="contact_us.html">Contact Us</a>
+      <a href="about_us.html">About Us</a>
+      <a href="cart.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+      <!-- Display the cart items here -->
+    </div>
+    <div id="cart-total">
+      Total: $0.00
+    </div>
+    <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Benchmark Chef Supply. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
