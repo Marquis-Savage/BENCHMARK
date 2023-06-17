@@ -6,47 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - Benchmark Chef Supply</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <script src="stripe.js" defer></script>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Benchmark Chef Supply</h1>
-    <!-- Navigation -->
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="butchers_blend.html">Butcher's Blend</a>
-      <a href="hot_sauces.html">Hot Sauces</a>
-      <a href="bbq_sauces.html">BBQ Sauces</a>
-      <a href="contact_us.html">Contact Us</a>
-      <a href="about_us.html">About Us</a>
-      <a href="cart.html" class="cart-icon">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="cart-count">0</span>
-      </a>
-    </nav>
-  </header>
-
-  <!-- Main content -->
+  <!-- Navigation -->
+   <nav>
+    <div class="container">
+      <div class="logo">
+        <h1>Benchmark Chef Supply</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="butchers_blend.html">Butchers Blend</a></li>
+        <li><a href="hot_sauces.html">Hot Sauces</a></li>
+        <li><a href="bbq_sauces.html">BBQ Sauces</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
+        <li class="cart"><a href="checkout.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Main Content -->
   <main>
-    <h2>Checkout</h2>
-    <form id="checkout-form" action="process_payment.php" method="POST">
-      <!-- Include your payment form fields here -->
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone" required>
-      <input type="text" name="address" placeholder="Address" required>
-      <input type="text" name="city" placeholder="City" required>
-      <input type="text" name="state" placeholder="State" required>
-      <input type="text" name="zip" placeholder="ZIP Code" required>
-      <input type="submit" value="Submit Payment">
-    </form>
+    <h1>Checkout</h1>
+    <div id="cart-items">
+      <!-- Display the cart items here -->
+    </div>
+    <div id="payment-form">
+      <h2>Payment Information</h2>
+      <div id="card-element">
+        <!-- Stripe card element will be inserted here -->
+      </div>
+      <button id="card-button" data-secret="payment_intent_secret">Pay Now</button>
+    </div>
   </main>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2023 Benchmark Chef Supply. All rights reserved.</p>
+<footer>
+    <div class="container">
+      <p>&copy; 2023 Benchmark Chef Supply. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 
