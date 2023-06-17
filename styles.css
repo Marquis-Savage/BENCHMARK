@@ -99,3 +99,23 @@ form textarea {
   margin-bottom: 10px;
   padding: 5px;
 }
+
+/* Cart Icon */
+.cart-icon {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.cart-icon i {
+  margin-right: 5px;
+}
+
+#cart-count {
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
